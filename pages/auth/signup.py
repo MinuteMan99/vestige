@@ -1,5 +1,6 @@
 import customtkinter as ctk
 
+from pages.auth.login import LoginPage
 from pages.home import HomePage
 from ui.auth_layout import create_auth_layout
 from ui.theme import PRIMARY_BLUE, TEXT_WHITE
@@ -60,7 +61,6 @@ class SignupPage(ctk.CTkFrame):
 
         # switch to login page
 
-        from pages.auth.login import LoginPage
         ctk.CTkButton(
             panel,
             text="Already have an account? Login",
@@ -69,6 +69,9 @@ class SignupPage(ctk.CTkFrame):
             hover=False,
             command=lambda: self.controller.show_page(LoginPage)
         ).place(relx=0.5, rely=0.81, anchor="center")
+
+        self.message_label = ctk.CTkLabel(panel, text="")
+        self.message_label.place(relx=0.5, rely=0.68, anchor="center")
 
     def signup_user(self):
         full_name = self.name_entry.get().strip()

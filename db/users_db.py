@@ -22,7 +22,7 @@ def get_user_by_email(email):
     cursor = connection.cursor()
 
     query = "SELECT * FROM users WHERE email = %s"
-    cursor.execute(query, (email))
+    cursor.execute(query, (email,))
 
     user = cursor.fetchone()
 
