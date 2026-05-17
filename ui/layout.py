@@ -21,7 +21,7 @@ def create_layout(app):
     # ---------------- LOGO ---------------- #
 
     app_icon = ctk.CTkImage(
-        Image.open("assets\pictures\logo.PNG"),
+        Image.open("assets\icons\logo.PNG"),
         size=(20, 20)
     )
 
@@ -36,7 +36,7 @@ def create_layout(app):
     logo_label.pack(pady=(20, 10), padx=(5, 40))
 
     app_icon = ctk.CTkImage(
-        Image.open("ggg.PNG"),
+        Image.open("assets\pictures\profile.PNG"),
         size=(50, 50))
     logo_label = ctk.CTkLabel(
         sidebar,
@@ -74,14 +74,14 @@ def create_layout(app):
 
     # ---------------- BUTTONS ---------------- #
 
-    nav_button("Home", "home.png")
-    nav_button("Then Vs Now", "tvn.png")
-    nav_button("Timelines", "time.png")
-    nav_button("Lost Traditions", "lost.png")
-    nav_button("Gallery", "gallery.png")
-    nav_button("About", "about.png")
-    nav_button("Settings", "setting.png")
-    nav_button("Log out", "logout.png")
+    nav_button("Home", "assets/icons/home.png")
+    nav_button("Then Vs Now", "assets/icons/tvn.png")
+    nav_button("Timelines", "assets/icons/time.png")
+    nav_button("Lost Traditions", "assets/icons/lost.png")
+    nav_button("Gallery", "assets/icons/gallery.png")
+    nav_button("About", "assets/icons/about.png")
+    nav_button("Settings", "assets/icons/setting.png")
+    nav_button("Log out", "assets/icons/logout.png")
 
     # ---------------- MAIN AREA ---------------- #
 
@@ -122,7 +122,6 @@ def create_layout(app):
         right_sidebar,
         width=170,
         height=170,
-
         corner_radius=10,
         fg_color="#FFFFFF",
     )
