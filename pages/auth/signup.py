@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from PIL import Image
 
 from pages.auth.login import LoginPage
 from pages.home import HomePage
@@ -17,15 +18,20 @@ class SignupPage(ctk.CTkFrame):
 
         ctk.CTkLabel(
             left, text="Vestige",
-            font=("Konkhmer Sleokchher", 18, "bold"),
+            font=("Konkhmer Sleokchher", 22, "bold"),
             text_color=TEXT_WHITE
         ).place(relx=0.08, rely=0.06, anchor="w")
 
+        logo = ctk.CTkImage(
+            light_image=Image.open("assets/icons/logo1.png"),
+            dark_image=Image.open("assets/icons/logo1.png"),
+            size=(300, 300)
+        )
+
         ctk.CTkLabel(
             left,
-            text="LOGO",
-            font=("Konkhmer Sleokchher", 40, "bold"),
-            text_color=TEXT_WHITE
+            image=logo,
+            text="",
         ).place(relx=0.5, rely=0.5, anchor="center")
 
         ctk.CTkLabel(
@@ -35,17 +41,38 @@ class SignupPage(ctk.CTkFrame):
         ).place(relx=0.5, rely=0.12, anchor="center")
 
         # entry fields
-        self.name_entry = ctk.CTkEntry(panel, placeholder_text="Full Name")
+        self.name_entry = ctk.CTkEntry(
+            panel,
+            placeholder_text="Full Name",
+            width=250,
+            height=35,
+            fg_color="white",
+            text_color="black",
+            corner_radius=15
+        )
         self.name_entry.place(relx=0.5, rely=0.30,
                               anchor="center", relwidth=0.8)
 
-        self.email_entry = ctk.CTkEntry(panel, placeholder_text="Email")
+        self.email_entry = ctk.CTkEntry(
+            panel,
+            placeholder_text="Email",
+            width=250,
+            height=35,
+            fg_color="white",
+            text_color="black",
+            corner_radius=15
+        )
         self.email_entry.place(relx=0.5, rely=0.45,
                                anchor="center", relwidth=0.8)
 
         self.password_entry = ctk.CTkEntry(
             panel,
             placeholder_text="Create a Password",
+            width=250,
+            height=35,
+            fg_color="white",
+            text_color="black",
+            corner_radius=15,
             show="*"
         )
         self.password_entry.place(
