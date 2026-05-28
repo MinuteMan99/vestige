@@ -4,7 +4,14 @@ from PIL import Image
 
 # ---------------- LAYOUT FUNCTION ---------------- #
 
-def create_layout(app):
+def create_layout(
+    app,
+    home_command,
+    timeline_command,
+    tvn_command,
+    gallery_command=None,
+    ltr_command=None
+):
 
     # ---------------- LEFT SIDEBAR ---------------- #
 
@@ -56,7 +63,7 @@ def create_layout(app):
 
     # ---------------- NAV BUTTON FUNCTION ---------------- #
 
-    def nav_button(text, image_path, parent):
+    def nav_button(text, image_path, parent, command=None):
 
         icon = ctk.CTkImage(
             light_image=Image.open(image_path),
@@ -68,6 +75,7 @@ def create_layout(app):
             parent,
             image=icon,
             text=text,
+            command=command,
             height=45,
             corner_radius=10,
             fg_color="transparent",
@@ -81,11 +89,15 @@ def create_layout(app):
 
     # ---------------- BUTTONS ---------------- #
 
-    nav_button("Home", "assets/icons/home.png", top_left)
-    nav_button("Then Vs Now", "assets/icons/tvn.png", top_left)
-    nav_button("Timelines", "assets/icons/time.png", top_left)
-    nav_button("Lost Traditions", "assets/icons/lost.png", top_left)
-    nav_button("Gallery", "assets/icons/gallery.png", top_left)
+    nav_button("Home", "assets/icons/home.png", top_left, command=home_command)
+    nav_button("Then Vs Now", "assets/icons/tvn.png",
+               top_left, command=tvn_command)
+    nav_button("Timelines", "assets/icons/time.png",
+               top_left, command=timeline_command)
+    nav_button("Lost Traditions", "assets/icons/lost.png",
+               top_left, command=ltr_command)
+    nav_button("Gallery", "assets/icons/gallery.png",
+               top_left, command=gallery_command)
     nav_button("About", "assets/icons/about.png", top_left)
     nav_button("Settings", "assets/icons/setting.png", bottom_left)
     nav_button("Log out", "assets/icons/logout.png", bottom_left)
@@ -165,7 +177,7 @@ def create_layout(app):
         top_right,
         width=260,
         height=270,
-        corner_radius=17,
+        corner_radius=19,
         fg_color="#FFFFFF",
     )
     third.pack_propagate(False)
@@ -210,7 +222,7 @@ def create_layout(app):
             top_right,
             width=400,
             height=90,
-            corner_radius=10,
+            corner_radius=12,
             fg_color="white"
         )
         card.pack_propagate(False)
@@ -254,17 +266,3 @@ def create_layout(app):
     saved_text.place(relx=0.5, rely=0.5, anchor="center")
 
     return container
-
-
-# ---------------- APP WINDOW ---------------- #
-
-app = ctk.CTk()
-
-app.geometry("1200x650")
-app.title("Vestige")
-
-# CREATE THE LAYOUT
-content_area = create_layout(app)
-
-# START APP
-app.mainloop()
